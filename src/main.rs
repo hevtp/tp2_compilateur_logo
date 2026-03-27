@@ -7,15 +7,14 @@ use std::fs;
 //Import des modules de lib
 use tp2_compilateur_logo::lexer;
 fn main() {
-    
+
     println!("Lecture du programme Logo");
 
-    let programme = fs::read_to_string("examples/carre.lg")
+    let programme = fs::read_to_string("examples/commandes_simples.lg")
         .expect("N'arrive pas à lire le fichier");
 
-    let rules  = lexer::lexer_rules();
-    let lexemes = santiago::lexer::lex(&rules, &programme).unwrap();
-
+    let lexer_rules  = lexer::lexer_rules();
+    let lexemes = santiago::lexer::lex(&lexer_rules, &programme).unwrap();
     println!("{:?}", lexemes);
 
 }
