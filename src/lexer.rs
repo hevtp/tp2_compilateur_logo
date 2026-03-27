@@ -7,7 +7,7 @@
 //! - éviter les espaces et annoncer une erreur en cas de caractère inattendu
 
 use santiago::lexer::LexerRules;
-santiago::def!(ANY, r"(?:.|\n)");
+santiago::def!(ANY, r"(?:.|\n)"); // tout les caractères
 
 
 ///Construction du lexique des commandes en associant l'état correspondant si l'état est défaut
@@ -16,16 +16,16 @@ pub fn lexer_rules() -> LexerRules{
 
         // Les directions :
 
-        // FORWARD
+        // Forward
         "DEFAULT" | "FORWARD" = string "forward";
-        // BACKWARD
+        // Backward
         "DEFAULT" | "BACKWARD" = string "backward";
-        // LEFT
+        // Left
         "DEFAULT" | "LEFT" = string "left";
-        // RIGHT
+        // Right
         "DEFAULT" | "RIGHT" = string "right";
 
-        // NUMBER
+        // Number
         "DEFAULT" | "NUMBER" = pattern r"[0-9]+";
 
         // Les espaces " " sont ignorés
