@@ -7,3 +7,8 @@ edition = "2024"
 santiago = "*"
 svg_fmt = "0.4.5"
 open = "3.2"
+
+[[bin]]
+
+name = "svg"
+path = "src/bin/svg.rs"

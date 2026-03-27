@@ -6,9 +6,18 @@
 //! Il s'agit de la partie 3 du TP.
 
 use svg_fmt::*;
-use std::{fs, result};
+use std::{fs};
 
-pub fn draw_svg() -> result::Result<(), Box<dyn std::error::Error>> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+
+    println!("Génération du carré");
+    draw_svg()?;
+    open::that("vsg_square.svg")?;
+
+    Ok(())
+}
+
+fn draw_svg() -> Result<(), Box<dyn std::error::Error>> {
     //crée une chaîne vide où on va ajouter le contenu du vsg
     let mut svg = String::new();
     //Ligne obligatoire pour un fichier svg
