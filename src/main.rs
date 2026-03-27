@@ -1,7 +1,21 @@
 //! TP2 - Compilateur et Interpréteur Logo par Agathe Julien et Hevisinda Top
 //! Objectif : faire revivre le language logo en créeant un compliateur logo vers svg, puis un intérprateur logo.
-//!
-//!
+
+
+use std::fs;
+
+//Import des modules de lib
+use tp2_compilateur_logo::lexer;
 fn main() {
-    println!("Hello, world!");
+    
+    println!("Lecture du programme Logo");
+
+    let programme = fs::read_to_string("examples/carre.lg")
+        .expect("N'arrive pas à lire le fichier");
+
+    let rules  = lexer::lexer_rules();
+    let lexemes = santiago::lexer::lex(&rules, &programme).unwrap();
+
+    println!("{:?}", lexemes);
+
 }
