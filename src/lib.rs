@@ -4,3 +4,4 @@
 //!
 //! - lexer     :  permet l'analyse lexicale du programme Logo
 pub mod lexer;
+pub mod parser;
