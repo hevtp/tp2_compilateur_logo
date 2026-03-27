@@ -5,3 +5,5 @@ edition = "2024"
 
 [dependencies]
 santiago = "*"
+svg_fmt = "0.4.5"
+open = "3.2"

@@ -6,7 +6,8 @@ use std::fs;
 
 //Import des modules de lib
 use tp2_compilateur_logo::lexer;
-fn main() {
+use tp2_compilateur_logo::svg::draw_svg;
+fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     println!("Lecture du programme Logo");
 
@@ -17,4 +18,9 @@ fn main() {
     let lexemes = santiago::lexer::lex(&lexer_rules, &programme).unwrap();
     println!("{:?}", lexemes);
 
+    println!("Génération du carré");
+    draw_svg()?;
+    open::that("vsg_square.svg")?;
+
+    Ok(())
 }

@@ -5,6 +5,8 @@
 //!- Les commandes de direction : forward, backward, left, right
 //!- les nombres
 //! - éviter les espaces et annoncer une erreur en cas de caractère inattendu
+//!
+//! Il s'agit de la partie 2-a du TP.
 
 use santiago::lexer::LexerRules;
 santiago::def!(ANY, r"(?:.|\n)"); // tout les caractères
