@@ -1,7 +1,6 @@
 //! TP2 - Compilateur et Interpréteur Logo par Agathe Julien et Hevisinda Top
 //! Objectif : faire revivre le language logo en créeant un compliateur logo vers svg, puis un intérprateur logo.
-
-
+//!
 use std::fs;
 use tp2_compilateur_logo::{lexer, parser};
 
@@ -31,7 +30,14 @@ fn main() {
     let grammar = parser::grammar(); 
     match santiago::parser::parse(&grammar, &tokens) { //parse les tokens selon la grammaire
         Ok(parse_trees) => { 
-            println!("Parse tree :\n{:#?}", parse_trees[0]);
+            println!("Parse tree :\n{}", parse_trees[0]);
+            
+            println!("--- Arbre de syntaxe abstraite (AST) ---");
+            let ast = parse_trees[0].as_abstract_syntax_tree();
+            println!("{:?}\n", ast);
+
+            println!("--- Evaluation ---");
+            parser::eval(&ast);
         }
         Err(e) => {
             println!("syntax error: {}", e);
