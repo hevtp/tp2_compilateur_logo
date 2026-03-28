@@ -4,7 +4,7 @@
 use std::fs;
 
 //Import des modules de lib
-use tp2_compilateur_logo::{lexer, parser};
+use tp2_compilateur_logo::{lexer, parser, compiler::{ Logo}};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
 
@@ -41,11 +41,28 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             println!("{:?}\n", ast);
             println!("--- Evaluation ---");
             parser::eval(&ast);
+
+
+            // Compile
+            println!("--- Compilateur SVG ---");
+            let mut logo = Logo::new(100.0, 100.0);
+            logo.compile(&ast);
+            let svg = logo.finish();
+
+            // Écrire le SVG dans un fichier
+            let compile_test = "compile_test.svg";
+            fs::write(compile_test, svg)?;
+            println!("SVG généré dans le fichier '{}'", compile_test);
+
+            // ouvre le fichier
+            if open::that(compile_test).is_err() {
+                println!("Impossible d'ouvrir le fichier SVG");
+            }
         }
 
         Err(e) => {
-            println!("syntax error: {}", e);
-        }
+                println!("syntax error: {}", e);
+            }
 
     }
 

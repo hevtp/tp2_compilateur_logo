@@ -73,7 +73,7 @@ pub fn eval(ast: &AST) {
 }
 
 /// Fonction d'extraction de l'ordre à partir de l'AST
-fn extract_order(ast: &AST) -> Option<&AST> {
+pub fn extract_order(ast: &AST) -> Option<&AST> {
     match ast {
         AST::Order(commands) if !commands.is_empty() => Some(&commands[0]), 
         AST::Forward | AST::Backward | AST::Left | AST::Right => Some(ast), 
